@@ -32,7 +32,7 @@ Then connect to a guest agent server socket `/tmp/gqa.sock`:
 import qga
 
 fn main() {
-  ga := qga.Client.new('/tmp/qga.sock')!
+  mut ga := qga.Client.new('/tmp/qga.sock')!
   agent_version := ga.info()!.version
   println('everything is fine! guest agent version is ${agent_version}')
 }
