@@ -168,6 +168,7 @@ pub:
 	eof   bool
 }
 
+@[params]
 pub struct GuestFileWriteParams {
 pub:
 	is_encoded bool
@@ -282,9 +283,9 @@ pub fn (mut c Client) get_cpustats() ![]GuestCpuStats {
 }
 
 pub struct GuestDeviceInfo {
-	driver_name    string
-	driver_data    ?string
-	driver_version ?string
+	driver_name    string  @[json: 'driver-name']
+	driver_data    ?string @[json: 'driver-data']
+	driver_version ?string @[json: 'driver-version']
 	id             ?GuestDeviceId
 }
 
@@ -323,7 +324,7 @@ pub:
 	unit           int
 	serial         ?string
 	dev            ?string
-	ccw_address    ?GuestCCWAddress
+	ccw_address    ?GuestCCWAddress @[json: 'ccw-address']
 }
 
 pub struct GuestPCIAddress {
@@ -556,7 +557,7 @@ pub:
 pub struct GuestAgentCommandInfo {
 pub:
 	name             string
-	enbled           bool
+	enabled          bool
 	success_response bool @[json: 'success-response']
 }
 
