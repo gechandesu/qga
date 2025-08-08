@@ -70,6 +70,11 @@ pub struct ClientParams {
 	read_buffer_size int           = 4096            // read buffer size in bytes
 }
 
+// close closes connection to stream socket.
+pub fn (mut c Client) close() ! {
+	c.stream.close()!
+}
+
 // Request represents a common QEMU Guest Agent Protocol request schema.
 struct Request[T] {
 	execute   string
